@@ -43,13 +43,16 @@ def recMC(coinValueList, change, knowResults):
 
 # solution4 dynamic programming 
 def dpMakeChange(coinValueList, change, minCoins, coinUsed):
-    for cents in range(1,change+1):
+    # 从1开始到change逐个计算硬币最少数
+    for cents in range(1,change+1): #(1,64)
+        # 1.初始化最大值
         coinCount = cents
         newCoin = 1
+        # 2.减去每个硬币，向后查最少硬币数，同时记录总的最少数
         for j in [c for c in coinValueList if c <= cents]:
             if minCoins[cents - j] + 1 < coinCount:
                 coinCount = minCoins[cents - j] + 1
-        
+        # 3.得到当前最少硬币数，记录在表中
         minCoins[cents] = coinCount #问题的最优解包含了更小规模子问题的最优解
         coinUsed[cents] = newCoin
     return minCoins[change]
