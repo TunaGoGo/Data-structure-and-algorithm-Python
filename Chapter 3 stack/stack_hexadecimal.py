@@ -15,7 +15,7 @@ def divideBy2(decNumber):
 
 #可同时处理十六进制以下的转法
 def baseConverter(decNumber,base):
-    digits = '0123456789ABCDEF'
+    digits = '0123456789ABCDEF' # 因余数不能直接写两位数，需要查表进行转换。即使16进制，最大余数也只有15，所以到F截至
     remstack = Stack()
 
     while decNumber > 0:

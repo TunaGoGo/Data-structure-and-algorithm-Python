@@ -19,7 +19,7 @@ def infixToPostfix(infixexpr):
             opStack.push(token)
         elif token == ")":
             topToken = opStack.pop()#如果是），则从stack中删除一个元素，可能是（，也可能是运算符
-            while token != "(":
+            while topToken != "(":
                 postfixList.append(topToken)
                 topToken = opStack.pop()
         else:
